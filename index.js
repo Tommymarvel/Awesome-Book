@@ -1,62 +1,12 @@
 /* eslint-disable max-classes-per-file */
 
-import { AwesomeBooks } from "./modules/Awesome.js";
+import AwesomeBooks from './modules/Awesome.js';
+import { displayBooks, addBookToList, clearFields } from './modules/userInterface.js';
+import { addition, remove } from './modules/localstorage.js';
+import getTime from './modules/date.js';
 
-
-
- let getData = () => {
-   let books;
-   if (localStorage.getItem("books") === null) {
-     books = [];
-   } else {
-     books = JSON.parse(localStorage.getItem("books"));
-   }
-   return books;
- };
-
- let addition = (book) => {
-   const books = getData();
-   books.push(book);
-   localStorage.setItem("books", JSON.stringify(books));
- };
-
- let remove = (id) => {
-   const books = getData();
-   books.forEach((book, index) => {
-     if (book.id === id) {
-       books.splice(index, 1);
-     }
-   });
-   localStorage.setItem("books", JSON.stringify(books));
- };
-
- 
-  let displayBooks = () => {
-    const books = getData();
-    const myBooks = books;
-    myBooks.forEach((book) => {
-      addBookToList(book);
-    });
-  }
-
-  let addBookToList = (book) => {
-    const beAppended = document.createElement('div');
-    beAppended.className = 'kitab';
-    beAppended.innerHTML = `
-       <h4>${book.title}</h4> <span class = 'creator'>${book.author}</span>
-       <p class="identity-book">${book.id}</p>
-       <button class = 'delete'>Delete</button>
-       `;
-    getAppended.appendChild(beAppended);
-  }
-
-  let clearFields = () => {
-    document.getElementById('title').value = '';
-    document.getElementById('author').value = '';
-  }
-
-
-
+const displayTime = document.querySelector('.displayTime');
+displayTime.innerHTML = getTime();
 
 const getAppended = document.getElementById('book-container');
 document.addEventListener('DOMContentLoaded', displayBooks);

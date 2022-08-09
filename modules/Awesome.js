@@ -1,8 +1,9 @@
+class AwesomeBooks {
+  constructor(title, author, id) {
+    this.title = title;
+    this.author = author;
+    this.id = id;
+  }
+}
 
- export class AwesomeBooks {
-   constructor(title, author, id) {
-     this.title = title;
-     this.author = author;
-     this.id = id;
-   }
- }
+export default AwesomeBooks;
